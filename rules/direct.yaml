@@ -1,0 +1,5 @@
+# 强制直连名单，优先于 AI、流媒体和国内规则。
+# 同一个域名同时出现在 proxy.yaml 时，强制代理优先。
+# payload:
+#   - '+.example.cn'
+payload: []

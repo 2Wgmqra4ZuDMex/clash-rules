@@ -1,0 +1,15 @@
+# 自定义 AI 补充名单；基础 AI 名单由上游规则维护。
+payload:
+  - '+.openai.com'
+  - '+.chatgpt.com'
+  - '+.oaistatic.com'
+  - '+.oaiusercontent.com'
+  - '+.anthropic.com'
+  - '+.claude.ai'
+  - '+.claude.com'
+  - 'gemini.google.com'
+  - 'aistudio.google.com'
+  - 'generativelanguage.googleapis.com'
+  - '+.x.ai'
+  - '+.grok.com'
+  - '+.perplexity.ai'

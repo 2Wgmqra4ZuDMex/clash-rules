@@ -1,0 +1,150 @@
+mode: rule
+proxy-groups:
+  - name: 默认代理
+    type: select
+    proxies: [自动选择]
+    include-all: true
+  - name: AI
+    type: select
+    proxies: [默认代理]
+    include-all: true
+  - name: 流媒体
+    type: select
+    proxies: [默认代理]
+    include-all: true
+  - name: 自动选择
+    type: url-test
+    include-all: true
+    url: https://www.gstatic.com/generate_204
+    interval: 600
+    tolerance: 100
+    lazy: true
+rule-providers:
+  custom-proxy:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./ruleset/personal/proxy.yaml
+    url: https://raw.githubusercontent.com/2Wgmqra4ZuDMex/clash-rules/main/rules/proxy.yaml
+    proxy: 默认代理
+    interval: 3600
+  custom-direct:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./ruleset/personal/direct.yaml
+    url: https://raw.githubusercontent.com/2Wgmqra4ZuDMex/clash-rules/main/rules/direct.yaml
+    proxy: 默认代理
+    interval: 3600
+  custom-ai:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./ruleset/personal/ai.yaml
+    url: https://raw.githubusercontent.com/2Wgmqra4ZuDMex/clash-rules/main/rules/ai.yaml
+    proxy: 默认代理
+    interval: 3600
+  custom-media:
+    type: http
+    behavior: domain
+    format: yaml
+    path: ./ruleset/personal/media.yaml
+    url: https://raw.githubusercontent.com/2Wgmqra4ZuDMex/clash-rules/main/rules/media.yaml
+    proxy: 默认代理
+    interval: 3600
+  private:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/personal/private.mrs
+    url: https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/private.mrs
+    proxy: 默认代理
+    interval: 86400
+  privateip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    path: ./ruleset/personal/privateip.mrs
+    url: https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/privateip.mrs
+    proxy: 默认代理
+    interval: 86400
+  ai:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/personal/ai.mrs
+    url: https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/ai.mrs
+    proxy: 默认代理
+    interval: 86400
+  youtube:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/personal/youtube.mrs
+    url: https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/youtube.mrs
+    proxy: 默认代理
+    interval: 86400
+  netflix:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/personal/netflix.mrs
+    url: https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/netflix.mrs
+    proxy: 默认代理
+    interval: 86400
+  media:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/personal/media.mrs
+    url: https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/media.mrs
+    proxy: 默认代理
+    interval: 86400
+  mediaip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    path: ./ruleset/personal/mediaip.mrs
+    url: https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/mediaip.mrs
+    proxy: 默认代理
+    interval: 86400
+  proxy:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/personal/proxy.mrs
+    url: https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/proxy.mrs
+    proxy: 默认代理
+    interval: 86400
+  cn:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/personal/cn.mrs
+    url: https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/cn.mrs
+    proxy: 默认代理
+    interval: 86400
+  cnip:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    path: ./ruleset/personal/cnip.mrs
+    url: https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/cnip.mrs
+    proxy: 默认代理
+    interval: 86400
+rules:
+  - RULE-SET,privateip,DIRECT,no-resolve
+  - RULE-SET,private,DIRECT
+  - RULE-SET,custom-proxy,默认代理
+  - RULE-SET,custom-direct,DIRECT
+  - RULE-SET,custom-ai,AI
+  - RULE-SET,ai,AI
+  - RULE-SET,custom-media,流媒体
+  - RULE-SET,youtube,流媒体
+  - RULE-SET,netflix,流媒体
+  - RULE-SET,media,流媒体
+  - RULE-SET,proxy,默认代理
+  - RULE-SET,cn,DIRECT
+  - RULE-SET,mediaip,流媒体,no-resolve
+  - RULE-SET,cnip,DIRECT
+  - MATCH,默认代理
