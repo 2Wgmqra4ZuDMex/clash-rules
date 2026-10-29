@@ -37,6 +37,7 @@ payload:
 2. 自定义强制代理（同名冲突时优先）。
 3. 自定义强制直连。
 4. 网关本地保留的网站例外。
+   Discord 的已知服务域名明确走默认代理。
 5. AI。
 6. YouTube、Netflix、国际流媒体。
 7. 已知国外域名代理。
@@ -52,5 +53,18 @@ payload:
 初次部署时会在网关合并此片段并通过内核检查。修改 `routing.yaml` 的策略结构需要重新合并部署；四个 `rules/*.yaml` 名单则可以自动更新。
 
 公开仓库不包含订阅链接、节点密码、SSH 凭据或 GitHub 令牌。
+
+## 网关网络保护
+
+部署环境已使用全端口 TCP/UDP 接管，国内直连与国外代理由内核规则决定。
+网关本机和客户端 DNS 统一进入 Mihomo：国内与强制直连使用本地 AdGuard Home，国外使用代理内 DoH。
+节点域名启动解析仍使用本地 AdGuard Home，这是明确保留的解析例外。
+
+独立 nftables 防护在代理停止时阻断公网转发，保留局域网及 WireGuard 外层通信。
+该网关允许 Mihomo 按规则执行 DIRECT；不等同于只允许节点端点出站的全局代理网关。
+不要把 GLOBAL 或默认出口改成 DIRECT 来代替规则模式。
+
+网络保护属于网关本地配置，仅下载本仓库的分流片段不会自动安装防火墙。
+BitComet 等下载程序的独立直连尚未配置，当前会按普通流量分流；完成独立直连前应保持关闭。
 
 参考：[Mihomo 规则集合](https://wiki.metacubex.one/config/rule-providers/)、[策略组](https://wiki.metacubex.one/config/proxy-groups/)。
