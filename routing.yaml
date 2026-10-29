@@ -2,7 +2,6 @@ mode: rule
 proxy-groups:
   - name: 默认代理
     type: select
-    proxies: [自动选择]
     include-all: true
   - name: AI
     type: select
@@ -12,13 +11,6 @@ proxy-groups:
     type: select
     proxies: [默认代理]
     include-all: true
-  - name: 自动选择
-    type: url-test
-    include-all: true
-    url: https://www.gstatic.com/generate_204
-    interval: 600
-    tolerance: 100
-    lazy: true
 rule-providers:
   custom-proxy:
     type: http
