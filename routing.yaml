@@ -11,6 +11,9 @@ proxy-groups:
     type: select
     proxies: [默认代理]
     include-all: true
+  - name: 未匹配流量
+    type: select
+    proxies: [默认代理, DIRECT]
 rule-providers:
   custom-proxy:
     type: http
@@ -145,4 +148,4 @@ rules:
   - RULE-SET,cn,DIRECT
   - RULE-SET,mediaip,流媒体,no-resolve
   - RULE-SET,cnip,DIRECT
-  - MATCH,默认代理
+  - MATCH,未匹配流量
