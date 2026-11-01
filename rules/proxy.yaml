@@ -3,4 +3,5 @@
 # payload:
 #   - '+.example.com'   # 主域名及其全部子域名
 #   - 'api.example.net' # 只匹配这个域名
-payload: []
+payload:
+  - 'ai-api.mozheyu.fun'
