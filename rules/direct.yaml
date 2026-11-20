@@ -2,4 +2,5 @@
 # 同一个域名同时出现在 proxy.yaml 时，强制代理优先。
 # payload:
 #   - '+.example.cn'
-payload: []
+payload:
+  - 'www.seagm.com'
